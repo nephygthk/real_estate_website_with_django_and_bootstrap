@@ -1,0 +1,137 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Home| Elephant Castle Propeties - Best real estate company in Nigeria{% endblock%}
+
+
+{% block content %}
+
+<section id="hero">
+    <div class="container ">
+        <div class="row justify-content-center align-item-center">
+            <div class="col-md-7">
+                <h2 class="title">ELEPHANT CASTLE PROPERTIES</h2>
+                <p class="sub-title">Buy and Sell real estate properties with Elephant Castle Properties estate surveyors and valuers</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- How it works  -->
+<section id="how-it-works">
+    <div class="container py-5">
+        <h2 class="text-center text-danger mb-5">How It works!</h2>
+        <div class="row pt-3">
+            <div class="col-4 text-center">
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
+                <h3>Find a Property</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="col-4 text-center">
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
+
+                <h3>Buy a Property</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="col-4 text-center">
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
+
+                <h3>Rent a Property</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Top sales -->
+
+<section id="top-sales">
+    <div class="container py-5">
+        <h2 class="text-center text-danger mb-5">Top Sales</h2>
+        <div class="row">
+            {% for sale in top_sales %}
+            <div class="col-md-3 p-anime">
+                <div class="card h-100 ">
+                    <img src="{{sale.top_image.url}}" class="card-img-top" style="height: 180px;">
+                    <div class="card-body">
+                      <p class="card-text text-start fw-600" style="font-size: 16px;">{{sale.title|slice:":76"}} ..............</p>
+                      <h5 class="card-title">&#x20A6;{{sale.price}}</h5>
+                      <a href="{% url 'properties:details' sale.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- properties -->
+
+<section id="properties">
+    <div class="container py-5">
+        <h2 class="text-center text-danger mb-5">Available Properties</h2>
+        <div class="row">
+            {% for property in properties %}
+            <div class="col-md-3 p-anime">
+                <div class="card h-100">
+                    <img src="{{property.top_image.url}}" class="card-img-top" style="height: 180px;">
+                    <div class="card-body">
+                      <p class="card-text text-start fw-600" style="font-size: 16px;">{{property.title|slice:":76"}} ..............</p>
+                      <h5 class="card-title">&#x20A6;{{property.price}}</h5>
+                      <a href="{% url 'properties:details' property.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}          
+        </div>
+    </div>
+</section>
+
+
+<!-- who we are -->
+<section id="who-we-are">
+    <div class="container py-5">
+        <div class="row pt-2 gx-5">
+            <div class="col-md-6 border-start mb-5 mb-sm-0">
+                <img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-1 border-end border-1 border-dark"></div>
+            <div class="col-md-5 mt-2 mt-sm-0">
+                <h2>We Are The Best At What We Do.</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique alias distinctio tempore ipsum cumque esse dolore fuga cum pariatur? Quas iste itaque rem, vero sit eligendi! Suscipit iure quos similique?</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- testimonial -->
+<section id="testimonial">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4 testimonials">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <i class="fa fa-quote-left"></i>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dolores
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dolores?</p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <img src="{% static 'images/pension.jpg' %}">
+                            <h3>Sean parker</h3>
+                    </div>
+                </div>           
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock%}

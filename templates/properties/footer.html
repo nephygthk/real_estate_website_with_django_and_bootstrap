@@ -1,0 +1,45 @@
+{% load static %}
+<style>
+    #footer{
+    background-color: #000000 !important;    
+    }
+    ul {
+	list-style-type: none;
+    }
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+    a:hover{
+        color: #ff523b;
+    }
+</style>
+
+<section id="footer">
+    <div class="container py-5 text-white">
+        <div class="row gx-5">
+            <div class="col-md-4 text-center">
+                <img src="{% static 'images/logo.png' %}" class="img-fluid mb-4" style="width: 250px;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse nam quia odit temporibus? Quia, numquam. Repellendus deleniti aliquid totam soluta voluptas. Quasi, consequuntur error. Odit deleniti voluptas eos! Sed suscipit doloremque maiores modi excepturi molestiae similique hic quibusdam eum quas?</p>
+            </div>
+            <div class="col-md-4 d-flex flex-column text-center pt-5">
+                <h3 class="mb-4">Useful Links</h3> 
+                <a href="">Home</a>
+                <a href="">Contact</a>
+                <a href="">Properties</a>
+                
+                
+            </div>
+            <div class="col-md-4 d-flex flex-column text-center pt-5">
+                <h3 class="mb-4">Follow Us</h3>
+                <a href="">Facebook</a>
+                <a href="">Twitter</a>
+                <a href="">Tiktok</a>
+                <a href="">Instagram</a>
+                <a href="">Youtube</a>
+            </div>
+        </div>
+        <hr class="text-white">
+        <h6 class="text-center">&#169;	Copyright 2023 - Elephant Castle Properties</h6>
+    </div>
+</section>

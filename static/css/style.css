@@ -1,0 +1,103 @@
+
+
+.text-danger{
+    color: #ff523b !important;
+}
+
+.btn-danger{
+    background-color: #ff523b !important;
+}
+
+.btn-danger:hover{
+    background-color: rgb(46, 133, 46) !important;
+    border-color:  rgb(46, 133, 46) !important;
+}
+
+.nav-link:hover{
+    color: #fff !important;
+    background-color: #ff523b;
+}
+
+
+
+/* hero section */
+#hero{
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+    url(/static/images/hero.jpg) top right no-repeat;
+    height: 100vh;
+	background-position: center;
+    background-size: cover;
+}
+
+.title{
+    margin-top: 250px;
+    color: white;
+    font-size: clamp(35px, 5vw, 70px);
+}
+
+.sub-title{
+    color: #fff;
+    font-size: clamp(15px, 3vw, 25px);
+}
+
+
+/* who we are */
+#who-we-are{
+    background: radial-gradient(#fff, #ffd6d6);
+}
+
+
+/* testimonial */
+.testimonials img{
+    width: 50px;
+    height: 50px;
+	margin-top: 20px;
+	border-radius: 50%;
+}
+
+.fa.fa-quote-left {
+	font-size: 34px;
+	color: #ff523b;
+}
+
+.testimonials p {
+	font-size: 12px;
+	margin: 12px 0;
+	color: #777;
+}
+
+.testimonials h3 {
+	font-weight: 600;
+	color: #555;
+	font-size: 15px;
+}
+
+.rating .fa {
+	color: #ff523b;
+}
+
+
+
+/* footer */
+#footer{
+    background-color: #000 !important;
+}
+
+
+
+
+
+/* animation */
+.p-anime{
+    transition: transform 0.5s;
+}
+.p-anime:hover{
+    transform: translateY(-10px);
+}
+
+.testimonials{
+    transition: transform 0.5s;
+}
+.testimonials:hover{
+    transform: translateY(-10px);
+}

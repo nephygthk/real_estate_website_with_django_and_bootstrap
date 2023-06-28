@@ -1,0 +1,124 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Property Details | Elephant Castle Propeties - Best real estate company in Nigeria{% endblock%}
+
+
+{% block content %}
+<section id="property-detail">
+    <div class="container py-5 mt-5">
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+            {% if message.tags %}<strong>{{ message.tags }}! </strong>{% endif %} {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="row pt-5 ">
+            <div class="col-md-6">         
+                <img src="{{property.top_image.url}}" alt="" class="img-fluid" id="ProductImg">
+                <div class="row mt-3 gx-1">
+                    {% for images in property_images%}
+                    <div class="col-2">
+                        <img src="{{images.property_image.url}}" alt="" class="img-fluid small-img" >
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6 pt-5">              
+                <h2 class="mb-4">For {{property.category.name}}!</h2>
+                <p class="lead mb-4"> <strong>Title:</strong> {{property.title}} </p>
+                <h3 class="mb-4">Price: {{property.price}}</h3>
+                <p> <strong>Details:</strong><br> {{property.details}}</p>
+                <a href="#contact" class="btn btn-danger fw-bold rounded-pill w-50 mt-4">Get Now</a>              
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container pb-5">
+        
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card shadow card-sm">
+                    <h3 class="card-title text-center text-danger fw-bold mt-3">Let Us Know</h3>
+                    <div class="card-body m-3">
+                        <form action="." method="POST">
+                            {% csrf_token%}
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-bold">Full Name</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label fw-bold">Phone Number</label>
+                                <input type="text" class="form-control" id="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label fw-bold">Message</label>
+                                <textarea class="form-control" id="message" rows="4">I am interested in this property ({{property.title}}). . . . . . . . .</textarea>
+                            </div>
+                            <input type="submit" value="Send" class="btn btn-danger rounded-pill fw-bold w-100">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- <h3 class="text-center text-danger mb-5">Have a question?</h3> -->
+            <div class="col-md-5">
+                <div class="card shadow mb-3">
+                    <div class="card-body">
+                        <p><strong>Address:</strong> contact@elephantcastleproperties.com</p>
+                        <p><strong>Email:</strong> contact@elephantcastleproperties.com</p>
+                        <p><strong>Phone:</strong> 000-000-000-000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    var ProductImg = document.getElementById("ProductImg");
+    var SmallImg = document.getElementsByClassName("small-img");
+    for(let i = 0; i < SmallImg.length; i++){
+        SmallImg[i].onclick = function()
+        {
+            ProductImg.src = SmallImg[i].src;
+        }
+    }
+
+    // SmallImg[0].onclick = function()
+    // {
+    //     ProductImg.src = SmallImg[0].src;
+    // }
+    // SmallImg[1].onclick = function()
+    // {
+    //     ProductImg.src = SmallImg[1].src;
+    // }
+    // SmallImg[2].onclick = function()
+    // {
+    //     ProductImg.src = SmallImg[2].src;
+    // }
+    // SmallImg[3].onclick = function()
+    // {
+    //     ProductImg.src = SmallImg[3].src;
+    // }
+    // SmallImg[4].onclick = function()
+    // {
+    //     ProductImg.src = SmallImg[4].src;
+    // }
+    // SmallImg[5].onclick = function()
+    // {
+    //     ProductImg.src = SmallImg[5].src;
+    // }
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houses - NE&E Real Estate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="fullnav">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="logo" width="125px" height="40px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li ><a href="index.html" >Home</a></li>
+                        <li><a href="">Houses</a></li>
+                        <li><a href="">For Sale</a></li>
+                        <li><a href="">For Rent</a></li>
+                        <li><a href="">Lease</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <!-- <img src="images/cart.png" width="30px" height="30px" > -->
+                <img src="images/menu.png" class="menu-icon"
+                 onclick="menutoggle()" >
+            </div>
+            
+         </div>
+        </div>
+
+     <!-- single product -->
+     <div class="small-container single-product">
+         <div class="row">
+             <div class="col-2">
+                 <img src="images/Sale1-1.jpg" width="100%" id="ProductImg">
+                 <div class="small-img-row">
+                     <div class="small-img-col">
+                         <img src="images/Sale1-1.jpg" width="100%" class="small-img">
+                     </div>
+                     <div class="small-img-col">
+                         <img src="images/Sale1-2.jpg" width="100%" class="small-img">
+                     </div>
+                     <div class="small-img-col">
+                         <img src="images/Sale1-3.jpg" width="100%" class="small-img">
+                     </div>
+                     <div class="small-img-col">
+                         <img src="images/Sale1-4.jpg" width="100%" class="small-img">
+                     </div>
+                     <div class="small-img-col">
+                         <img src="images/Sale1-5.jpg" width="100%" class="small-img">
+                     </div>
+                     
+                 </div>
+             </div>
+             <div class="col-2">
+                
+                 <h1>For Sale!!</h1>
+                 <p>Tittle: Governors consent</p>
+                 <h4>Price: N70,000,000</h>
+                 <h3>Details</h3>
+                 <p>5 bedroom detached duplex with 3 balconies and a room BQ located
+                at a serene estate in Amuwo Odofin. It has an amqazing lake view. </p>
+                    <button class="btn">Get Now</button>
+
+             </div>
+
+         </div>
+     </div>
+     <!-- discription and form -->
+     <section id="contact" >
+        <div class="containers">
+            <h2>Contact Us</h2>
+            <div class="flex">
+                <div id="form-container">
+                    <h3>Contact Form</h3>
+                    <form>
+                        <label for="name">Name</label>
+                        <input type="text" id="name">
+
+                        <label for="email">Email</label>
+                        <input type="text" id="email">
+                        <label for="text">Phone Number</label>
+                        <input type="text" id="Phonenumber">
+
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject">
+
+                        <label for="message">Message</label>
+                        <textarea name="" id="message">Write your message here....</textarea>
+
+                        <button class="btn">Send Message</button>
+                    </form>
+
+                </div>
+                <div id="address-container">
+                    <label>Address</label>
+                    <address>
+                        Lorem ipsum dolor sit amet consectetur.
+                    </address>
+
+                    <label>Phone</label>
+                    <a href="#">987898789879</a>
+
+                    <label>Email</label>
+                    <a href="#">necght@gmail.com</a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+         <!-- featured products -->
+     <div class="small-container">
+
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Sale1-1.jpg">
+                <h4>5 bedroom detached duplex with a room BQ located at Amuwo Odofin</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                 <h3>N70,000,000</h3>
+                 <button class="btn">View Details</button>
+            </div>
+            <div class="col-4">
+                <img src="images/Sale2-1.jpg">
+                <h4>7 bedroom duplex in a very serene close off Ago palace for outright purchase</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                 <h3>N55,000,000</h3>
+                 <button class="btn">View Details</button>
+            </div>
+            <div class="col-4">
+                <img src="images/Sale3-1.jpg">
+                <h4>A 5 bedroom manson you dont want to miss located at Victoria Park Estate</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                 <h3>130,000,000</h3>
+                 <button class="btn">View Details</button>
+            </div>
+            <div class="col-4">
+                <img src="images/Sale4-1.jpg">
+                <h4>A luxurious 7bedroom duplex with 2 sitting rooms and 4 rooms staff quarter on a 1000sqms plot</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                 <h3>N110,000,000</h3>
+                 <button class="btn">View Details</button>
+            </div>
+        </div>
+ 
+    </div>
+
+ <!-- footer -->
+ <div class="footer">
+     <div class="container">
+         <div class="row">
+             <div class="footer-col-1">
+                 <h3>Download Our App</h3>
+                 <p>Lorem ipsum dolor sit amet consectetur <br>adipisicing elit</p>
+             </div>
+             <div class="footer-col-2">
+                <img src="images/logo.jpg" alt="logo" width="125px" height="50px">
+
+                 <p>Lorem ipsum dolor sit amet consectetur<br> ety adipisicing!</p>
+             </div>
+             <div class="footer-col-3">
+                  <h3>Useful Links</h3>
+                  <ul>
+                      <li>Coupons</li>
+                      <li>Blog Post</li>
+                      <li>Return Policy</li>
+                      <li>Join Affiliate</li>
+                  </ul>
+             </div>
+             <div class="footer-col-4">
+                  <h3>Follow Us</h3>
+                  <ul>
+                      <li>Facebook</li>
+                      <li>Twitter</li>
+                      <li>instagram</li>
+                      <li>Youtube</li>
+                  </ul>
+             </div>
+         </div>
+         <hr>
+         <p class="copyright">Copyright 2021 - NE&C</p>
+     </div>
+ </div>
+
+    
+     
+    <script>
+        var  MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(   MenuItems.style.maxHeight == "0px")
+            {
+                MenuItems.style.maxHeight = "200px";
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+
+    <!-- image gallery -->
+
+    <script>
+        var ProductImg = document.getElementById("ProductImg");
+        var SmallImg = document.getElementsByClassName("small-img");
+
+        SmallImg[0].onclick = function()
+        {
+            ProductImg.src = SmallImg[0].src;
+        }
+        SmallImg[1].onclick = function()
+        {
+            ProductImg.src = SmallImg[1].src;
+        }
+        SmallImg[2].onclick = function()
+        {
+            ProductImg.src = SmallImg[2].src;
+        }
+        SmallImg[3].onclick = function()
+        {
+            ProductImg.src = SmallImg[3].src;
+        }
+        SmallImg[4].onclick = function()
+        {
+            ProductImg.src = SmallImg[4].src;
+        }
+
+
+
+    </script>
+</body>
+</html>
