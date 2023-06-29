@@ -1,6 +1,9 @@
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import TemplateView, ListView, CreateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
@@ -88,10 +91,22 @@ class PropertyDetailView(TemplateView):
     template_name = 'properties/detail.html'
 
 
+# authentication
+class MyLoginView(LoginView):
+    redirect_authenticated_user = True
+    template_name = 'properties/login.html'
+    
+    def get_success_url(self):
+        return reverse_lazy('properties:list_properties') 
+    
+    def form_invalid(self, form):
+        messages.error(self.request,'Invalid username or password')
+        return self.render_to_response(self.get_context_data(form=form))
+
 
 # crude
 
-class AddpropertyView(CreateView):
+class AddpropertyView(LoginRequiredMixin, CreateView):
     template_name = 'properties/crud/add_property.html'
     model = Property
     form_class = forms.PropertyForm
@@ -136,10 +151,33 @@ class AddpropertyView(CreateView):
 
 
 
-class ListPropertyView(ListView):
+class ListPropertyView(LoginRequiredMixin, ListView):
     model = Property	
     context_object_name = 'properties'
     template_name = 'properties/crud/list_properties.html'
+
+
+def delete_property(request, pk):
+    my_property = Property.objects.get(pk=pk) 
+    my_property.delete()
+
+    messages.success(request, 'Property was deleted successfully')
+    return redirect('properties:list_properties')
+
+# class DeletePropertyView(DeleteView):
+#     model = Property
+#     success_url = reverse_lazy("properties:list_properties")
+#     template_name = 'properties/crud/list_properties.html'
+
+
+#     def delete(self, request, *args, **kwargs):
+#         self.object = self.get_object()
+#         success_url = self.get_success_url()
+#         self.object.delete()
+
+#         messages.success(self.request, 'Property was deleted successfully')
+#         return HttpResponseRedirect(success_url)
+     
 
     
 

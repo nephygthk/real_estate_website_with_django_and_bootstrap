@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Contact| Elephant Castle Propeties - Best real estate company in Nigeria{% endblock%}
+
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center align-item-center py-5">
+        <div class="col-md-6">
+            <div class="card shadow card-sm">
+                <div class="card-body">
+                    <form method="post" class="card" novalidate>
+                        {% csrf_token %}
+                      <h2 class="text-center">Log in to your account</h2>
+                      {% for field in form %}
+                              {{ field.label_tag }} 
+                              {{ field }}
+                              {% if field.errors %}
+                                  <small>{{ field.errors|striptags }}</small> 
+                              {% endif %}
+                      {% endfor %}
+                      
+                      <input type="submit" value="Login" class="btn btn-danger fw-bold rounded-pill full-width mt-3">
+                      <!-- <hr>
+                      <p class="text-center">Forgot your password <a href="#">Reset Password</a></p>
+                      <p class="text-center">Don't have a account? <a href="#">Join Now</a></p> -->
+                  </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
