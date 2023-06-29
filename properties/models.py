@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.text import slugify
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -9,7 +11,7 @@ class Category(models.Model):
 
 class Property(models.Model):
     title = models.CharField(max_length=300)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     price = models.IntegerField()
     details = models.TextField()
     top_image = models.FileField(upload_to='top_images', null=True, blank=True)
@@ -24,6 +26,11 @@ class Property(models.Model):
         verbose_name = "Property"
         verbose_name_plural = "Properties"
         ordering = ('-created',)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Property, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

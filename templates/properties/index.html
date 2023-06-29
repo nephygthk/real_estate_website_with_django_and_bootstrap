@@ -1,5 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}Home| Elephant Castle Propeties - Best real estate company in Nigeria{% endblock%}
 
@@ -23,22 +24,22 @@
     <div class="container py-5">
         <h2 class="text-center text-danger mb-5">How It works!</h2>
         <div class="row pt-3">
-            <div class="col-4 text-center">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
                 <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
-                <h3>Find a Property</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h3>Value Management</h3>
+                <p>Reduce your stress and let your investment work for you.</p>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
                 <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
 
-                <h3>Buy a Property</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h3>Property Management</h3>
+                <p>well Managed Properties stay Occupied,cost less, yield more and project a perfect image.</p>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
                 <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
 
-                <h3>Rent a Property</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h3>Estate Consulting</h3>
+                <p>We offer consultancy for estate management and plans.</p>
             </div>
         </div>
     </div>
@@ -57,7 +58,7 @@
                     <img src="{{sale.top_image.url}}" class="card-img-top" style="height: 180px;">
                     <div class="card-body">
                       <p class="card-text text-start fw-600" style="font-size: 16px;">{{sale.title|slice:":76"}} ..............</p>
-                      <h5 class="card-title">&#x20A6;{{sale.price}}</h5>
+                      <h5 class="card-title">&#x20A6;{{sale.price|intcomma}}</h5>
                       <a href="{% url 'properties:details' sale.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
                     </div>
                 </div>
@@ -76,12 +77,12 @@
         <h2 class="text-center text-danger mb-5">Available Properties</h2>
         <div class="row">
             {% for property in properties %}
-            <div class="col-md-3 p-anime">
+            <div class="col-md-3 p-anime mb-md-4">
                 <div class="card h-100">
                     <img src="{{property.top_image.url}}" class="card-img-top" style="height: 180px;">
                     <div class="card-body">
                       <p class="card-text text-start fw-600" style="font-size: 16px;">{{property.title|slice:":76"}} ..............</p>
-                      <h5 class="card-title">&#x20A6;{{property.price}}</h5>
+                      <h5 class="card-title">&#x20A6;{{property.price|intcomma}}</h5>
                       <a href="{% url 'properties:details' property.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
                     </div>
                 </div>
@@ -97,7 +98,7 @@
     <div class="container py-5">
         <div class="row pt-2 gx-5">
             <div class="col-md-6 border-start mb-5 mb-sm-0">
-                <img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
+                <img src="{% static 'images/e_logo.png' %}" alt="" class="img-fluid">
             </div>
             <div class="col-1 border-end border-1 border-dark"></div>
             <div class="col-md-5 mt-2 mt-sm-0">

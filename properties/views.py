@@ -1,14 +1,12 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, CreateView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 
-
-
 from .models import Media, Property
-
+from . import forms
 
 class HomeView(ListView):
     model = Property	
@@ -90,6 +88,60 @@ class PropertyDetailView(TemplateView):
     template_name = 'properties/detail.html'
 
 
+
+# crude
+
+class AddpropertyView(CreateView):
+    template_name = 'properties/crud/add_property.html'
+    model = Property
+    form_class = forms.PropertyForm
+    success_url = reverse_lazy('properties:add_property')
+
+    def get(self, request, *args, **kwargs):
+        # fetching the empty  form and formset
+
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        media_form = forms.MediaFormSet()
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  media_form=media_form,))
+    
+    def post(self, request, *args, **kwargs):
+    
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        media_form = forms.MediaFormSet(self.request.POST, self.request.FILES)
+        if (form.is_valid() and media_form.is_valid()):
+            return self.form_valid(form, media_form,)
+        else:
+            return self.form_invalid(form, media_form)
+        
+    def form_valid(self, form, media_form):
+
+        self.object = form.save()
+        media_form.instance = self.object
+        media_form.save()
+        messages.success( self.request,f'Property is added succesfully.')
+        return HttpResponseRedirect(self.get_success_url())
+    
+    def form_invalid(self, form, media_form):
+        messages.success( self.request,f'Something went wrong, please try again')
+        
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  media_form=media_form))
+
+
+
+class ListPropertyView(ListView):
+    model = Property	
+    context_object_name = 'properties'
+    template_name = 'properties/crud/list_properties.html'
+
+    
 
     
     

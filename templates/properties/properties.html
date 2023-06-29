@@ -1,5 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}Properties| Elephant Castle Propeties - Best real estate company in Nigeria{% endblock%}
 
@@ -10,12 +11,12 @@
         <h2 class="text-center text-danger mb-5">All Available Properties</h2>
         <div class="row py-5">
             {% for property in properties %}
-            <div class="col-md-3 p-anime">
+            <div class="col-md-3 p-anime mb-md-4">
                 <div class="card h-100">
                     <img src="{{property.top_image.url}}" class="card-img-top" style="height: 180px;">
                     <div class="card-body">
                       <p class="card-text text-start fw-600" style="font-size: 16px;">{{property.title|slice:":76"}} ..............</p>
-                      <h5 class="card-title">&#x20A6;{{property.price}}</h5>
+                      <h5 class="card-title">&#x20A6;{{property.price|intcomma}}</h5>
                       <a href="{% url 'properties:details' property.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
                     </div>
                 </div>

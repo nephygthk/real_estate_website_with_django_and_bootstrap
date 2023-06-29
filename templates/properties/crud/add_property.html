@@ -1,0 +1,113 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Add Property| Elephant Castle Propeties - Best real estate company in Nigeria{% endblock%}
+
+
+{% block content %}
+    <section id="add_properties">
+        <div class="container py-5 mt-5">
+            <div class="row justify-content-center align-item-center py-5">
+                <h3 class="text-center text-danger">Add New Property</h3>
+                <div class="col-md-6">
+                    <div class="card shadow card-sm">
+
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{error}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{message}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="card-body">
+                            <form action="." method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="{{form.title.id_for_label}}" class="form-label fw-bold">Title</label>
+                                    {{form.title}}
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="{{form.price.id_for_label}}" class="form-label fw-bold">Price</label>
+                                            {{form.price}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="{{form.category.id_for_label}}" class="form-label fw-bold">Category</label>
+                                            {{form.category}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="{{form.top_image.id_for_label}}" class="form-label fw-bold">Top Image</label>
+                                            {{form.top_image}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="{{form.is_top_sale.id_for_label}}" class="form-label fw-bold">Top Sale</label>
+                                            {{form.is_top_sale}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="{{form.details.id_for_label}}" class="form-label fw-bold">Title</label>
+                                    {{form.details}}
+                                </div>
+
+                                <!-- media formset -->
+                                <fieldset >
+                                    {{media_form.management_form }}
+                                    {{media_form.non_form_errors }}
+
+                                    {% for form2 in media_form %}
+                                        {{ form.id }}
+                                        <div class="inline {{ media_form.prefix }} mb-2">
+                                            {{ form2.property_image.errors }}
+                                            {{ form2.property_image.label_tag }}
+                                            {{ form2.property_image }}
+                                        </div>
+                                    {% endfor %}
+                                </fieldset>                       
+                                <input type="submit" value="Save" class="btn btn-danger rounded-pill w-100 mt-3 fw-bold">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js" integrity="sha512-ltwjKsDTo3hW/wV66ZaEkf2wOAFxmg7rWM76J8kOcYKLSKy44WBYO/BFaNNH3NGDS8BSz3meB9wtSnm41oL+pA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $(".inline.{{ media_form.prefix }}").formset({
+            prefix: "{{ media_form.prefix }}",
+        })
+    })
+</script>
+{% endblock %}
+$(".inline.{{ instruction_form.prefix }}").formset({
+    prefix: "{{ instruction_form.prefix }}",
+})
