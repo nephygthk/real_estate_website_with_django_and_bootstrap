@@ -2,13 +2,13 @@ from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 
-from .models import Media, Property
+from .models import Media, Property, Category
 from . import forms
 
 class HomeView(ListView):
@@ -21,6 +21,12 @@ class HomeView(ListView):
        context = super(HomeView, self).get_context_data(**kwargs)
        context['top_sales'] = Property.objects.filter(is_top_sale=True)
        return context
+
+
+def category_list(request, slug=None):
+    category = get_object_or_404(Category, slug=slug)
+    my_properties = Property.objects.filter(category=category)
+    return render(request, "properties/category.html", {"category": category, "properties": my_properties})
 
 
 # class PropertyDetailView(DetailView):
@@ -164,21 +170,41 @@ def delete_property(request, pk):
     messages.success(request, 'Property was deleted successfully')
     return redirect('properties:list_properties')
 
-# class DeletePropertyView(DeleteView):
-#     model = Property
-#     success_url = reverse_lazy("properties:list_properties")
-#     template_name = 'properties/crud/list_properties.html'
+
+class UpdatePropertyView(LoginRequiredMixin, CreateView):
+    template_name = 'properties/crud/update_property.html'
+    model = Property
+    form_class = forms.PropertyForm
+    success_url = reverse_lazy('properties:update_property')
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdatePropertyView, self).get_context_data(**kwargs)
+        
+        if self.request.POST:
+            context['form'] = forms.PropertyForm(self.request.POST, self.request.FILES, instance=self.object)
+            context['media_form'] = forms.MediaFormSet(self.request.POST, self.request.FILES, instance=self.object)
+        else:
+            context['form'] = forms.PropertyForm(instance=self.get_object())
+            context['media_form'] = forms.MediaFormSet(queryset=self.get_object)
+            print(self.get_object())
+        return context
+    
+
+def mark_property_as_sold(request, pk):
+    my_property = Property.objects.get(pk=pk)
+    my_property.is_sold = True
+    my_property.save()
+    return redirect('properties:list_properties')
 
 
-#     def delete(self, request, *args, **kwargs):
-#         self.object = self.get_object()
-#         success_url = self.get_success_url()
-#         self.object.delete()
 
-#         messages.success(self.request, 'Property was deleted successfully')
-#         return HttpResponseRedirect(success_url)
+
+    
+    
+    
+
+    
      
-
     
 
     

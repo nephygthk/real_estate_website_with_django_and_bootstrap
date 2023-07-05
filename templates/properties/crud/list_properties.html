@@ -30,6 +30,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Price</th>  
                             <th scope="col">Date Added</th>  
+                            <th scope="col">Status</th> 
                             <th scope="col"></th>  
                             <th scope="col"></th>  
                             <th scope="col"></th>  
@@ -43,8 +44,13 @@
                             <td>{{property.title}}</td>
                             <td>{{property.price}}</td>
                             <td>{{property.created}}</td>
+                            {% if not property.is_sold%}
+                              <td><a href="{% url 'properties:property_sold' property.pk %}" class="btn btn-secondary fw-bold btn-sm text-white">Mark</a></td>
+                            {% else %}
+                            <td class="text-success fw-bold">Sold</td>
+                            {% endif %}
                             <td><a href="{% url 'properties:details' property.slug %}" class="btn btn-primary fw-bold btn-sm text-white">Details</a></td>
-                            <!-- <td><a href="" class="btn btn-info fw-bold btn-sm text-white">Update</a></td> -->
+                            <td><a href="{% url 'properties:update_property' property.pk %}" class="btn btn-info fw-bold btn-sm text-white">Update</a></td>
                             <td><a href="{% url 'properties:delete_property' property.pk %}" class="btn btn-danger fw-bold btn-sm text-white">Delete</a></td>
                             
                           </tr>

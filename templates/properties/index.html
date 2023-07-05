@@ -12,7 +12,7 @@
         <div class="row justify-content-center align-item-center">
             <div class="col-md-7">
                 <h2 class="title">ELEPHANT CASTLE PROPERTIES</h2>
-                <p class="sub-title">Buy and Sell real estate properties with Elephant Castle Properties, subsidiary of Nonso Egbunike And Co. estate surveyors and valuers.</p>
+                <p class="sub-title">Buy and sell real estate properties with Elephant Castle Properties, subsidiary of Nonso Egbunike And Co. Estate Surveyors and Valuers.</p>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
 <!-- How it works  -->
 <section id="how-it-works">
     <div class="container py-5">
-        <h2 class="text-center text-danger mb-5">How It works!</h2>
+        <h2 class="text-center text-danger mb-5">HOW IT WORKS!</h2>
         <div class="row pt-3">
             <div class="col-md-4 text-center mb-4 mb-md-0">
                 <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
@@ -33,7 +33,7 @@
                 <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
 
                 <h3>Property Management</h3>
-                <p>well Managed Properties stay Occupied,cost less, yield more and project a perfect image.</p>
+                <p>Well managed properties stay occupied, cost less, yield more and project a perfect image for our client. Our property management system ensures that our client's properties are kept in functional and profitaable order to maximize the returns on investment. </p>
             </div>
             <div class="col-md-4 text-center mb-4 mb-md-0">
                 <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
@@ -54,12 +54,18 @@
         <div class="row">
             {% for sale in top_sales %}
             <div class="col-md-3 p-anime">
+                {% if sale.is_sold %}
+                <h3 id="sold">Sold</h3>
+                {% endif %}
                 <div class="card h-100 ">
-                    <img src="{{sale.top_image.url}}" class="card-img-top" style="height: 180px;">
+                    <img src="{{sale.top_image.url}}" class="card-img-top">
                     <div class="card-body">
-                      <p class="card-text text-start fw-600" style="font-size: 16px;">{{sale.title|slice:":76"}} ..............</p>
-                      <h5 class="card-title">&#x20A6;{{sale.price|intcomma}}</h5>
-                      <a href="{% url 'properties:details' sale.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
+                        <p class="fw-bold text-primary">{{sale.category}}</p>
+                        <p class="card-text text-start fw-600" style="font-size: 16px;">{{sale.title|slice:":76"}} ..............</p>
+                        <h5 class="card-title">&#x20A6;{{sale.price|intcomma}}</h5>
+                        <hr>
+                        <p class="card-subtitle fw-bold small text-secondary">{{sale.bedroom}} Bed | {{sale.bathroom}} Bath</p>
+                        <a href="{% url 'properties:details' sale.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
                     </div>
                 </div>
             </div>
@@ -77,16 +83,25 @@
         <h2 class="text-center text-danger mb-5">Available Properties</h2>
         <div class="row">
             {% for property in properties %}
+            {% if property.category.name != 'Lease' %}
             <div class="col-md-3 p-anime mb-md-4">
+                {% if property.is_sold %}
+                <h3 id="sold">Sold</h3>
+                {% endif %}
+                <!-- <h3 id="sold">Sold</h3> -->
                 <div class="card h-100">
-                    <img src="{{property.top_image.url}}" class="card-img-top" style="height: 180px;">
+                    <img src="{{property.top_image.url}}" class="card-img-top">
                     <div class="card-body">
-                      <p class="card-text text-start fw-600" style="font-size: 16px;">{{property.title|slice:":76"}} ..............</p>
-                      <h5 class="card-title">&#x20A6;{{property.price|intcomma}}</h5>
-                      <a href="{% url 'properties:details' property.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
+                        <p class="fw-bold text-primary">{{property.category}}</p>
+                        <p class="card-text text-start fw-600" style="font-size: 16px;">{{property.title|slice:":76"}} ..............</p>
+                        <h5 class="card-title">&#x20A6;{{property.price|intcomma}}</h5>
+                        <hr>
+                        <p class="card-subtitle fw-bold small text-secondary">{{property.bedroom}} Bed | {{property.bathroom}} Bath</p>
+                        <a href="{% url 'properties:details' property.slug %}" class="btn btn-danger fw-bold mt-3 rounded-pill w-100">View Details</a>
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}          
         </div>
     </div>
@@ -103,11 +118,21 @@
             <div class="col-1 border-end border-1 border-dark"></div>
             <div class="col-md-5 mt-2 mt-sm-0">
                 <h2>We Are The Best At What We Do.</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique alias distinctio tempore ipsum cumque esse dolore fuga cum pariatur? Quas iste itaque rem, vero sit eligendi! Suscipit iure quos similique?</p>
+                <p>Elephant Castle Limited is a young and dynamic real estate investment consultancy, we are focused on delivering Value in value management, project management, estate consulting and property management services.</p>
+                <!-- <p class="fw-bol text-sucess">Suggested List Of Services:</p>
+                <ul>
+                    <li>Buying and Selling of properties</li>
+                    <li>Rent/ Lease</li>
+                    <li>Commercial/ Residential...?</li>
+                    <li>Property Management</li>
+                    <li>Estate Management</li>
+                    <li>Consultancy</li>
+                </ul> -->
             </div>
         </div>
     </div>
 </section>
+Estate Management
 
 
 <!-- testimonial -->

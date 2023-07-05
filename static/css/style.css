@@ -83,7 +83,17 @@
     background-color: #000 !important;
 }
 
-
+.p-anime{
+    position: relative;
+}
+#sold{
+    position: absolute;
+    font-size: 90px;
+    color: #ff523b;
+    top: 50px;
+    right: 50px;
+    z-index: 99;
+}
 
 
 
