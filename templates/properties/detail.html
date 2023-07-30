@@ -18,11 +18,11 @@
         {% endif %}
         <div class="row pt-5 ">
             <div class="col-md-6">         
-                <img src="{{property.top_image.url}}" alt="" class="img-fluid" id="ProductImg">
+                <img src="{{property.top_image.url}}" alt="" class="img-fluid bgi-imgg" id="ProductImg">
                 <div class="row mt-3 gx-1">
                     {% for images in property_images%}
                     <div class="col-2">
-                        <img src="{{images.property_image.url}}" alt="" class="img-fluid small-img" style="height: 90px; width: 120px;" >
+                        <img src="{{images.property_image.url}}" alt="" class="img-fluid small-img">
                     </div>
                     {% endfor %}
                 </div>

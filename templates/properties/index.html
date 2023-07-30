@@ -7,6 +7,7 @@
 
 {% block content %}
 
+
 <section id="hero">
     <div class="container ">
         <div class="row justify-content-center align-item-center">
@@ -19,32 +20,100 @@
 </section>
 
 
-<!-- How it works  -->
-<section id="how-it-works">
-    <div class="container py-5">
-        <h2 class="text-center text-danger mb-5">HOW IT WORKS!</h2>
-        <div class="row pt-3">
-            <div class="col-md-4 text-center mb-4 mb-md-0">
-                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
-                <h3>Value Management</h3>
-                <p>Reduce your stress and let your investment work for you.</p>
+<!-- about -->
+<section class="about">
+    <div class="container py-4">
+        <h2 class="text-center text-danger mb-5">About Us</h2>
+        <div class="row gx-5">
+            <div class="col-md-5">
+                <img src="{% static 'images/about-img.jpg' %}" alt="" class="img-fluid rounded-circle">
             </div>
-            <div class="col-md-4 text-center mb-4 mb-md-0">
-                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
-
-                <h3>Property Management</h3>
-                <p>Well managed properties stay occupied, cost less, yield more and project a perfect image for our client. Our property management system ensures that our client's properties are kept in functional and profitaable order to maximize the returns on investment. </p>
-            </div>
-            <div class="col-md-4 text-center mb-4 mb-md-0">
-                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
-
-                <h3>Estate Consulting</h3>
-                <p>We offer consultancy for estate management and plans.</p>
+            <div class="col-md-7">
+                <h2>Introduction</h2>
+                <p class="text-dark">Elephant Castle Properties is a dynamic and innovative real estate investment 
+                    consultancy. We are focused on delivering excellence in value management, project 
+                    management, estate consulting and property management services. Our range of services 
+                    spans the scope of the real estate investor's needs, from simple conveyance to full 
+                    management of developed property and disposal as the case may be.
+                    We have concrete experience in managing residential and commercial properties both in 
+                    and outside of Lagos. Our services ensure that our client's realties are kept in functional 
+                    and profitable order, ensuring or exceeding the returns on our client's investment in their 
+                    property portfolio.
+                    Well-managed property assets cost less, deliver better returns and project the perfect 
+                    image for clients. With an impressive track record and extensive experience, Elephant 
+                    Castle's management team has enabled developers, owners and occupiers alike to ensure 
+                    both efficient day-to-day operations and the best possible economic returns.
+                </p>
+                <h3>GOAL</h3>
+                <p>
+                    We place all resources at our disposal in to 
+                    the management of our realties. Our 
+                    experience in asset management, be it 
+                    residential or commercial, affirms that we 
+                    achieve or exceed the desired result.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
+
+<!-- How it works  -->
+<section id="how-it-works">
+    <div class="container py-5">
+        <h2 class="text-center text-danger mb-5">HOW IT WORKS</h2>
+        <div class="row pt-3">
+            
+            <div class="col-md-4  mb-4 mb-md-0">
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
+
+                <h3>Property Management</h3>
+                <p class="small">
+                    Our experienced and committed team manages commercial, 
+                    Residential and Industrial Properties of all sorts. Management 
+                    encompasses all aspects of routine day-to-day, month to month and 
+                    year-to-year services including tenant selection, the collection and 
+                    accounting of rents, insurance and service charges, the 
+                    enforcement of Landlord and Tenants repair obligations and other 
+                    lease concords, the supervision of service and maintenance 
+                    contracts and the implementation and record of rent and lease 
+                    renewals. Our Surveyor's advice on planned schedules of 
+                    maintenance and building improvement, ensuring Landlords are 
+                    kept appraised on likely future expenditure.
+                </p>
+            </div>
+            <div class="col-md-4  mb-4 mb-md-0">
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
+
+                <h3>Estate Consulting</h3>
+                <p class="small">
+                    Our firm is involved in providing unbiased end-to-end 
+                    advisory services on the real estate market to our clients. 
+                    This we carry out by researching real estate markets to 
+                    understand trends and market fundamentals in order to 
+                    anticipate changes in the market. This market 
+                    intelligence is critical to our keeping ahead of the market, 
+                    remaining competitive and elevating the quality of our 
+                    real estate investment decision-making on behalf of our 
+                    clients. Our aim here is geared towards providing 
+                    efficient, reliable and professional real estate advisory 
+                    services to meet the diverse needs of our clients and aid 
+                    them in potential decision-making.
+                </p>
+                
+            </div>
+            <div class="col-md-4  mb-4 mb-md-0">
+                <img src="{% static 'images/cart.png' %}" width="30px" height="30px" >
+                <h3>Value Management</h3>
+                <p class="small">
+                    This is the core of our service…to ensure all our projects 
+                    are delivered within budget and the stipulated timeframe 
+                    while attaining or exceeding the expected quality
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Top sales -->
 
@@ -58,7 +127,7 @@
                 <h3 id="sold">Sold</h3>
                 {% endif %}
                 <div class="card h-100 ">
-                    <img src="{{sale.top_image.url}}" class="card-img-top">
+                    <img src="{{sale.top_image.url}}" class="card-img-top p-card">
                     <div class="card-body">
                         <p class="fw-bold text-primary">{{sale.category}}</p>
                         <p class="card-text text-start fw-600" style="font-size: 16px;">{{sale.title|slice:":76"}} ..............</p>
@@ -90,7 +159,7 @@
                 {% endif %}
                 <!-- <h3 id="sold">Sold</h3> -->
                 <div class="card h-100">
-                    <img src="{{property.top_image.url}}" class="card-img-top">
+                    <img src="{{property.top_image.url}}" class="card-img-top p-card">
                     <div class="card-body">
                         <p class="fw-bold text-primary">{{property.category}}</p>
                         <p class="card-text text-start fw-600" style="font-size: 16px;">{{property.title|slice:":76"}} ..............</p>
@@ -117,7 +186,7 @@
             </div>
             <div class="col-1 border-end border-1 border-dark"></div>
             <div class="col-md-5 mt-2 mt-sm-0">
-                <h2>We Are The Best At What We Do.</h2>
+                <h2>A Nonso Egbunike & Co. Establishment.</h2>
                 <p>Elephant Castle Limited is a young and dynamic real estate investment consultancy, we are focused on delivering Value in value management, project management, estate consulting and property management services.</p>
                 <!-- <p class="fw-bol text-sucess">Suggested List Of Services:</p>
                 <ul>
@@ -132,7 +201,6 @@
         </div>
     </div>
 </section>
-Estate Management
 
 
 <!-- testimonial -->
@@ -143,8 +211,7 @@ Estate Management
                 <div class="card shadow text-center">
                     <div class="card-body">
                         <i class="fa fa-quote-left"></i>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dolores
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dolores?</p>
+                        <p>I have done business with this company and they are very reliable</p>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -152,8 +219,42 @@ Estate Management
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <img src="{% static 'images/pension.jpg' %}">
-                            <h3>Sean parker</h3>
+                            <img src="{% static 'images/commenter-1.jpeg' %}">
+                            <h3>Kolawole Felix</h3>
+                    </div>
+                </div>           
+            </div>
+            <div class="col-md-4 testimonials">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <i class="fa fa-quote-left"></i>
+                        <p>They helped get a property in Lekki and everything went smoothly</p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <img src="{% static 'images/commenter-2.jpg' %}">
+                            <h3>Ikenna Okeke</h3>
+                    </div>
+                </div>           
+            </div>
+            <div class="col-md-4 testimonials">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <i class="fa fa-quote-left"></i>
+                        <p>I have done business with this company and they are very reliable</p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <img src="{% static 'images/commenter-3.jpg' %}">
+                            <h3>Obianuju Odidika</h3>
                     </div>
                 </div>           
             </div>

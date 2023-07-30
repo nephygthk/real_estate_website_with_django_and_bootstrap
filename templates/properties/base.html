@@ -18,6 +18,31 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favi/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favi/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'images/favi/site.webmanifest' %}">
+
+    <style>
+      .p-card{
+        height: 200px;
+        object-fit: cover;
+      }
+      .bgi-imgg{
+        height: 450px;
+        width: 100%;
+        object-fit: cover;
+      }
+      .small-img{
+        height: 90px;
+        width: 120px;
+      }
+
+      @media (max-width: 767px){
+        .small-img{
+          height: 60px;
+        }
+        .bgi-imgg{
+          height: 300px;
+        }
+      }
+    </style>
   </head>
   <body class="bg-body-tertiary">
 
